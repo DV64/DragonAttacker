@@ -18,7 +18,7 @@ To install and run DragonAttacker on a Linux system, follow these steps:
 
 1. Open your terminal and clone the repository:
    ```bash
-   git clone https://github.com/DarkVairous/DragonAttacker
+   git clone https://github.com/DV64/DragonAttacker
    ```
 
 2. Change to the project directory:
@@ -52,7 +52,7 @@ To install DragonAttacker on **Termux** (a terminal emulator for Android), follo
 
 3. Clone the repository:
    ```bash
-   git clone https://github.com/DarkVairous/DragonAttacker
+   git clone https://github.com/DV64/DragonAttacker
    ```
 
 4. Change to the project directory:
