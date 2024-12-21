@@ -1,11 +1,11 @@
-# DragonAttacker
+### DragonAttacker
 
-**DragonAttacker** is a tool designed to simulate Distributed Denial of Service (DDoS) attacks. It can send a large volume of UDP packets to a target, potentially causing network disruption. This tool is for educational purposes only, and should **never** be used to attack any network or website without explicit permission.
+**DragonAttacker** is a tool designed to simulate Distributed Denial of Service (DDoS) attacks by sending large volumes of UDP packets to a target, potentially causing network disruption. This tool is **for educational purposes only**, and **should never** be used to attack any network or website without explicit permission.
 
 ---
 
 ### ⚠️ Important Note
-- **Do not use** this tool on unauthorized systems or networks. Unauthorized DDoS attacks are illegal and unethical.
+- **Do not use** this tool on unauthorized systems or networks. Unauthorized DDoS attacks are **illegal** and **unethical**.
 - Attacks launched from **Windows** systems are not recommended, as they are generally ineffective in this context.
 
 ---
@@ -31,7 +31,7 @@ To install and run DragonAttacker on a Linux system, follow these steps:
    python3 DragonAttacker.py
    ```
 
-   If `python3` is not available, you can try:
+   If `python3` is not available, try:
    ```bash
    python DragonAttacker.py
    ```
@@ -69,7 +69,8 @@ To install DragonAttacker on **Termux** (a terminal emulator for Android), follo
 
 ### Usage
 
-Once the script is running, you'll be prompted to provide the following:
+Once the script is running, you'll be prompted to provide the following information:
+
 1. **Target IP or Host**: The IP address or domain name of the target.
 2. **Port**: The port to send packets to (default: 80).
 3. **Duration**: The duration of the attack in seconds.
@@ -79,7 +80,7 @@ Once the script is running, you'll be prompted to provide the following:
 ### Example Command:
 
 ```bash
-[*] IP or Host Target: 192.168.1.1
+[*] IP or Host Target: 192.168.0.0
 [*] Port [Default port 80]: 80
 [*] Duration of the Attack (in seconds): 60
 ```
