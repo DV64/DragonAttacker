@@ -1,0 +1,14 @@
+{
+  "target_ips": [
+    "192.168.1.1",
+    "192.168.1.2"
+  ],
+  "target_port": 80,
+  "packet_size": 1024,
+  "num_processes": 4,
+  "use_anonymization": true,
+  "max_memory_usage": 70,
+  "max_cpu_usage_percent": 50,
+  "use_tor": true,
+  "use_socks_proxy": true
+}

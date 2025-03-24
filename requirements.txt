@@ -1,0 +1,27 @@
+# Core networking
+socket>=0.23.1
+ssl>=1.16
+ipaddress>=1.0.23
+
+# System and OS
+psutil>=5.9.0
+resource>=0.2.1
+
+# Cryptography
+hashlib>=20081119
+hmac>=20101005
+
+# Concurrency
+multiprocessing>=2.6.2.1
+asyncio>=3.4.3
+threading>=3.0.0
+
+# Additional utilities
+struct>=1.0
+random>=1.0.1
+json>=2.0.9
+logging>=0.5.1.2
+time>=1.0
+os>=0.1.0
+uuid>=1.30
+sys>=1.0
