@@ -1,7 +1,6 @@
 {
   "target_ips": [
-    "192.168.1.1",
-    "192.168.1.2"
+
   ],
   "target_port": 80,
   "packet_size": 1024,
